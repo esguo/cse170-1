@@ -15,6 +15,15 @@
     	<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 	  	<link rel="stylesheet" href="css/style.css">
 	  	<link rel="stylesheet" href="css/font-awesome.css">
+			<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+			<link rel="stylesheet" href="/resources/demos/style.css">
+			<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+			<script>
+			$( function() {
+				$( "#datepicker" ).datepicker();
+			} );
+			</script>
 
 	</head>
 	<div class = "container" style="font-family:'MontserratLight';">
@@ -37,9 +46,9 @@
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
 			        <li><a href="index.html">Home </a></li>
-			        <li class="active"><a href="request.html">Request a Babysitter<span class="sr-only">(current)</span></a></li> 
-			        <li><a href="myrequests.html">My Requests</a></li> 
-			      </ul>     
+			        <li class="active"><a href="request.html">Request a Babysitter<span class="sr-only">(current)</span></a></li>
+			        <li><a href="myrequests.html">My Requests</a></li>
+			      </ul>
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
@@ -65,14 +74,7 @@
 				    <div class="row">
 				        <div class='col-sm-6'>
 				            <div class="form-group">
-				            	<label for="sel1">When:</label>
-				                <input type='text' id="datepicker1" required/>
-
-				                <script type="text/javascript">
-						            $(function () {
-						                $('#datepicker1').datepicker();
-						            });
-				       			</script>
+				            	<label for="sel1"> Where: <input type="text" id="datepicker"></label>
 				            </div>
 				        </div>
 				    </div>
