@@ -21,26 +21,11 @@
 	<link rel="stylesheet" href="css/font-awesome.css">
 
 	<script>
-	function loadchildren(){
-		var list = document.createElement('ul');
-		for var i = 0; i < 5; i++){
-			var item = document.createElement('li');
-			item.appendChild(i);
-			list.appendChild(item);
-		}
-		return list;
-	}
-
-	document.getElementById("childName").appendChild(loadchildren());
-	</script>
-
-	<script>
 	$(document).ready(function(){
 	    $("#btnchild").click(function(){
 				var x = document.getElementById("childName").value;
 	        $("#childList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
 					localStorage.setItem("children", x);
-					alert(localStorage.children);
 	    });
 			$("#btngroup").click(function(){
 				var x = document.getElementById("groupName").value;
