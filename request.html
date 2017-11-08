@@ -19,9 +19,23 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<link rel="stylesheet" href="/resources/demos/style.css">
 		<script>
-		$( function() {
-			$( "#datepicker" ).datepicker();
-		} );
+			$( function() {
+				$( "#datepicker" ).datepicker();
+			} );
+		</script>
+
+		<script>
+			window.onload = function(){loadChildren()};
+			function loadChildren(){
+				var list = JSON.parse(localStorage.getItem("children"));
+				for (var index = 0; index < list.length; index++){
+					$("#childselect").append('<option>'+list[index]+'</option>');
+				}
+				list = JSON.parse(localStorage.getItem("groups"));
+				for (var index = 0; index < list.length; index++){
+					$("#groupselect").append('<option>'+list[index]+'</option>');
+				}
+			}
 		</script>
 
 	</head>
@@ -61,9 +75,7 @@
 				        <div class='col-sm-6'>
 							<div class="form-group">
 							  	<label for="sel1">For whom:</label>
-							  	<select class="form-control" id="sel1" required>
-							    	<option>Rachel Oh</option>
-							    	<option>Jason Oh</option>
+							  	<select class="form-control" id="childselect" required>
 							  	</select>
 							</div>
 						</div>
@@ -96,10 +108,7 @@
 				        <div class='col-sm-6'>
 				            <div class="form-group">
 				            	<label for="sel1">Which group:</label>
-				                <select class="form-control" id="sel1" required>
-							    	<option>UCSD</option>
-							    	<option>Apartmentmates</option>
-							    	<option>Church</church>
+				                <select class="form-control" id="groupselect" required>
 							  	</select>
 				            </div>
 				        </div>
