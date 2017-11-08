@@ -37,29 +37,30 @@
 	<script>
 	$(document).ready(function(){
 	    $("#btnchild").click(function(){
-				var x = document.getElementById("childName").value;
+				var x = [document.getElementById("childName").value];
 				if(x != ""){
 	        $("#childList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
 					var list = JSON.parse(localStorage.getItem("children"));
 					if (list == null){
-						alert("I NEED THIS TO BE AN ARRAY AND PUSH TO LOCALSTORAGE");
-
+						list = x;
 					}
 					else{
 						list.push(x);
-						localStorage.children = JSON.stringify(list);
-					};
-					alert("DONE");
-
+					}
+					localStorage.children = JSON.stringify(list);
 				};
 	    });
 			$("#btngroup").click(function(){
-				var x = document.getElementById("groupName").value;
+				var x = [document.getElementById("groupName").value];
 				if (x != ""){
 					$("#groupList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
-
-					var list = JSON.parse(localStorage.getItem("groups"));
-					list.push(x);
+					var list = JSON.parse(localStorage.getItem("children"));
+					if (list == null){
+						list = x;
+					}
+					else{
+						list.push(x);
+					}
 					localStorage.groups = JSON.stringify(list);
 				};
 			});
