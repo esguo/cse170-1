@@ -41,9 +41,15 @@
 				if(x != ""){
 	        $("#childList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
 					var list = JSON.parse(localStorage.getItem("children"));
-					alert("WOW");
-					list.push(x);
-					localStorage.children = JSON.stringify(list);
+					if (list == null){
+						alert("I NEED THIS TO BE AN ARRAY AND PUSH TO LOCALSTORAGE");
+
+					}
+					else{
+						list.push(x);
+						localStorage.children = JSON.stringify(list);
+					};
+					alert("DONE");
 
 				};
 	    });
