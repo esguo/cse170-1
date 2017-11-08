@@ -23,7 +23,7 @@
 					var list = JSON.parse(localStorage.getItem("requests"));
 					for (var index = 0; index < list.length; index+=4){
 						$("#myReq").append('<h3>'+ list[index] + '</h3>');
-						$("#myReq").append('<p>Time: '+ list[index + 1] + '</p>');
+						$("#myReq").append('<p>Date: '+ list[index + 1] + '</p>');
 						$("#myReq").append('<p>Location: '+ list[index + 2] + '</p>');
 						$("#myReq").append('<p>Pickup Group: '+ list[index + 3] + '</p>');
 					}
