@@ -45,15 +45,16 @@
 				var list = JSON.parse(localStorage.getItem("requests"));
 
 				var x = [document.getElementById("childselect").value];
-				x.push(document.getElementById("datepicker").text);
-				x.push(document.getElementById("location").text);
+				x.push(document.getElementById("datepicker").value);
+				x.push(document.getElementById("location").value);
 				x.push(document.getElementById("groupselect").value);
 
 				if (list == null){
 					list = x;
 				}
 				else{
-					list.push(x);
+					list = list.concat(x);
+
 				}
 				localStorage.requests = JSON.stringify(list);
 			});
