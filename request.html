@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Request a Babysitter</title>
-<meta charset="utf-8"> 
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -38,6 +38,28 @@
 			}
 		</script>
 
+		<script>
+		$(document).ready(function(){
+			$("#btnsubmit").click(function(){
+
+				var list = JSON.parse(localStorage.getItem("requests"));
+
+				var x = [document.getElementById("childselect").value];
+				x.push(document.getElementById("datepicker").text);
+				x.push(document.getElementById("location").text);
+				x.push(document.getElementById("groupselect").value);
+
+				if (list == null){
+					list = x;
+				}
+				else{
+					list.push(x);
+				}
+				localStorage.requests = JSON.stringify(list);
+			});
+		});
+		</script>
+
 	</head>
 	<div class = "container" style="font-family:'MontserratLight';">
 		<body>
@@ -61,7 +83,7 @@
 			        <li><a href="index.html">Home </a></li>
 			        <li class="active"><a href="request.html">Request a Babysitter<span class="sr-only">(current)</span></a></li>
 			        <li><a href="myrequests.html">My Requests</a></li>
-			        <li><a href="login.html">Logout</a></li> 
+			        <li><a href="login.html">Logout</a></li>
 			      </ul>
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
@@ -97,7 +119,7 @@
 				        <div class='col-sm-6'>
 				            <div class="form-group">
 				            	<label for="sel1">Where:</label>
-				                <input type='text' required></input>
+				                <input id="location" type='text' required></input>
 				            </div>
 				        </div>
 				    </div>
@@ -117,7 +139,7 @@
 				</div>
 
 				<a href="index.html" class="btn btn-default">Cancel Request</a>
-				<button type="submit" class="btn btn-primary">Submit Request</button>
+				<button id="btnsubmit" type="submit" class="btn btn-primary">Submit Request</button>
 			</form>
 
 		</body>
