@@ -7,7 +7,7 @@
 	<title>Babysitter</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
@@ -21,49 +21,58 @@
 	<link rel="stylesheet" href="css/font-awesome.css">
 
 	<script>
-		window.onload = function(){loadChildren()};
-		function loadChildren(){
+	window.onload = function(){loadChildren()};
+	function loadChildren(){
+		try{
 			var list = JSON.parse(localStorage.getItem("children"));
 			for (var index = 0; index < list.length; index++){
 				$("#childList").append('<li><i class="fa-li fa fa-user"></i>'+list[index]+'</li>');
 			}
-			list = JSON.parse(localStorage.getItem("groups"));
-			for (var index = 0; index < list.length; index++){
-				$("#groupList").append('<li><i class="fa-li fa fa-user"></i>'+list[index]+'</li>');
+
+			var glist = JSON.parse(localStorage.getItem("groups"));
+			for (var index = 0; index < glist.length; index++){
+				$("#groupList").append('<li><i class="fa-li fa fa-user"></i>'+glist[index]+'</li>');
 			}
 		}
+		catch(err){
+			var glist = JSON.parse(localStorage.getItem("groups"));
+			for (var index = 0; index < glist.length; index++){
+				$("#groupList").append('<li><i class="fa-li fa fa-user"></i>'+glist[index]+'</li>');
+			}
+		}
+	}
 	</script>
 
 	<script>
 	$(document).ready(function(){
-	    $("#btnchild").click(function(){
-				var x = [document.getElementById("childName").value];
-				if(x != ""){
-	        $("#childList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
-					var list = JSON.parse(localStorage.getItem("children"));
-					if (list == null){
-						list = x;
-					}
-					else{
-						list.push(x);
-					}
-					localStorage.children = JSON.stringify(list);
-				};
-	    });
-			$("#btngroup").click(function(){
-				var x = [document.getElementById("groupName").value];
-				if (x != ""){
-					$("#groupList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
-					var list = JSON.parse(localStorage.getItem("children"));
-					if (list == null){
-						list = x;
-					}
-					else{
-						list.push(x);
-					}
-					localStorage.groups = JSON.stringify(list);
-				};
-			});
+		$("#btnchild").click(function(){
+			var x = [document.getElementById("childName").value];
+			if(x != ""){
+				$("#childList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
+				var list = JSON.parse(localStorage.getItem("children"));
+				if (list == null){
+					list = x;
+				}
+				else{
+					list.push(x);
+				}
+				localStorage.children = JSON.stringify(list);
+			};
+		});
+		$("#btngroup").click(function(){
+			var x = [document.getElementById("groupName").value];
+			if (x != ""){
+				$("#groupList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
+				var list = JSON.parse(localStorage.getItem("groups"));
+				if (list == null){
+					list = x;
+				}
+				else{
+					list.push(x);
+				}
+				localStorage.groups = JSON.stringify(list);
+			};
+		});
 	});
 	</script>
 
