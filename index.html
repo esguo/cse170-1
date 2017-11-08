@@ -21,16 +21,41 @@
 	<link rel="stylesheet" href="css/font-awesome.css">
 
 	<script>
+		window.onload = function(){loadChildren()};
+		function loadChildren(){
+			var list = JSON.parse(localStorage.getItem("children"));
+			for (var index = 0; index < list.length; index++){
+				$("#childList").append('<li><i class="fa-li fa fa-user"></i>'+list[index]+'</li>');
+			}
+			list = JSON.parse(localStorage.getItem("groups"));
+			for (var index = 0; index < list.length; index++){
+				$("#groupList").append('<li><i class="fa-li fa fa-user"></i>'+list[index]+'</li>');
+			}
+		}
+	</script>
+
+	<script>
 	$(document).ready(function(){
 	    $("#btnchild").click(function(){
 				var x = document.getElementById("childName").value;
+				if(x != ""){
 	        $("#childList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
-					localStorage.setItem("children", x);
+					var list = JSON.parse(localStorage.getItem("children"));
+					alert("WOW");
+					list.push(x);
+					localStorage.children = JSON.stringify(list);
+
+				};
 	    });
 			$("#btngroup").click(function(){
 				var x = document.getElementById("groupName").value;
+				if (x != ""){
 					$("#groupList").append('<li><i class="fa-li fa fa-user"></i>'+x+'</li>');
-					localStorage.setItem("groups", x);
+
+					var list = JSON.parse(localStorage.getItem("groups"));
+					list.push(x);
+					localStorage.groups = JSON.stringify(list);
+				};
 			});
 	});
 	</script>
@@ -69,8 +94,6 @@
 		<h4>Children</h4>
 
 		<ul id="childList" class="fa-ul">
-			<li><i class="fa-li fa fa-user"></i>Rachel Oh</li>
-			<li><i class="fa-li fa fa-user"></i>Jason Oh</li>
 		</ul>
 
 		<ul id="endList" class="fa-ul">
@@ -81,9 +104,6 @@
 		<h4>Groups</h4>
 
 		<ul id="groupList" class="fa-ul">
-			<li><i class="fa-li fa fa-users"></i>UCSD</li>
-			<li><i class="fa-li fa fa-users"></i>Apartmentmates</li>
-			<li><i class="fa-li fa fa-users"></i>Church</li>
 		</ul>
 		<ul id="endList" class="fa-ul">
 			<li><i class="fa-li fa fa-plus" id="addgroup"></i></li><button id="btngroup">Add Group:</button>
